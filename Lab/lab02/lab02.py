@@ -14,6 +14,9 @@ def composite_identity(f, g):
     False
     """
     "*** YOUR CODE HERE ***"
+    def helper(x):
+        return f(g(x)) == g(f(x))
+    return helper
 
 
 def sum_digits(y):
@@ -60,6 +63,13 @@ def count_cond(condition):
     8
     """
     "*** YOUR CODE HERE ***"
+    def helper(N):
+        count = 0
+        for i in range(1, N + 1):
+            if condition(N, i):
+                count += 1
+        return count
+    return helper
 
 
 def multiple(a, b):
@@ -71,6 +81,9 @@ def multiple(a, b):
     42
     """
     "*** YOUR CODE HERE ***"
+    for i in range(1, a * b + 1):
+        if i % a == 0 and i % b == 0:
+            return i
 
 
 
@@ -101,4 +114,13 @@ def cycle(f1, f2, f3):
     19
     """
     "*** YOUR CODE HERE ***"
+    def helper(n):
+        def helper2(x):
+            for i in range(n):
+                x = f1(x)
+                x = f2(x)
+                x = f3(x)
+            return x
+        return helper2
+    return helper
 
